@@ -7,9 +7,9 @@ public class App {
         String svar = tb.nextLine();
 
         int space1 = svar.indexOf(" ");
-        int space2 = svar.indexOf(" ",(space1+1));
-        int space3 = svar.indexOf(" ",(space2+1));
-        int space4 = svar.indexOf(" ",(space3+1));
+        int space2 = svar.indexOf(" ",space1+1);
+        int space3 = svar.indexOf(" ",space2+1);
+        int space4 = svar.indexOf(" ",space3+1);
 
         String förnamn = svar.substring(0, space1);
         String efternamn = svar.substring(space1+1, space2);
@@ -24,15 +24,25 @@ public class App {
         System.out.println("Vikt: "+vikt);
         System.out.println("Ålder: "+ålder);        
 
-        int närmasteJämntÅlder = (Integer.parseInt(ålder) + 1) / 2 * 2;
-        if((närmasteJämntÅlder-Integer.parseInt(ålder)) == 2){
+        int IntÅlder = Integer.parseInt(ålder);
+        int närmasteJämntÅlder = (IntÅlder + 1) / 2 * 2;
+        if((närmasteJämntÅlder-IntÅlder) == 0){
             System.out.println("Det är 2 år tills du fyller jämt");
         } else{
-            System.out.println("Det är "+(närmasteJämntÅlder-Integer.parseInt(ålder))+" år tills du fyller jämt.");
+            System.out.println("Det är "+(närmasteJämntÅlder-IntÅlder)+" år tills du fyller jämt.");
         }
+        float floatVikt = Float.parseFloat(vikt);
+        int IntVikt = (int) floatVikt;
+        float AvrundsVikt = floatVikt;
+        float AvrundsDecimal = AvrundsVikt - IntVikt;
 
-
-
+        if(AvrundsDecimal >= 0.5){
+            IntVikt += 1;
+        }
+         if(AvrundsDecimal < 0.5 && AvrundsDecimal != 0){
+            IntVikt -= 1;
+        }
+        System.out.println("Din vikt avrundas till "+IntVikt+".");
         tb.close();
     }
 }
